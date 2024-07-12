@@ -34,9 +34,8 @@ header {
     font-size: 20px;
     text-decoration: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     list-style-type: none;
-    background-image: none;
 }
 
 .navlist a {
@@ -78,7 +77,6 @@ header {
 
 .contact {
     margin-top: 440px;
-    display: flex;
     width: 100%;
     height: 500px;
     justify-content: space-around;
@@ -86,7 +84,46 @@ header {
 
 .about-me-title {
     justify-content: space-around;
-    margin:25px auto 0px 40%;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+/* on centre la divs procjets */
+.projects{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 100px;
+}
+
+/* on centre les divs procjet */
+
+.project{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.project-image{
+    width: 300px;
+    border-radius: 10px;
+}
+
+.project-title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.project-description{
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1195px){
