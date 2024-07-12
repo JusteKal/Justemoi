@@ -67,6 +67,7 @@ header {
 
 .intro {
     animation: flotter 3s ease infinite;
+    text-align: center;
 }
 
 @keyframes flotter {
