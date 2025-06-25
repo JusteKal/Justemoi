@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Justemoi/', // <-- Remplace <nom-du-repo> par le nom de ton dépôt GitHub
   plugins: [
     vue(),
     vueDevTools(),
