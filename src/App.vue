@@ -3,7 +3,7 @@
     <Accueil id="home" />
     <Header id="apres-accueil" />
     <AboutMe id="about" />
-    <h1 id="projects">Projets</h1>
+    <h1 id="projects">{{ $t('projects') }}</h1>
     <div class="cards-container">
     <Card title="Etoiles Universe" :content="$t('card1')" img="/etoilesuniverse.png" link="https://github.com/JusteKal/Etoiles_Universe"/>
     <Card title="Mynthos Universe" :content="$t('card2')" img="https://cdn.modrinth.com/data/qwxJArlR/1db8c02578c53f7108db329bcb031c0825598d05.png" link="https://github.com/Wiibleyde/MynthosProject"/>
@@ -95,6 +95,7 @@ onMounted(() => {
   font-family: 'DM Sans', sans-serif;
   margin-top: 20px;
   color: #fff;
+  font-size: 2.5em;
 }
 .cards-container {
   display: flex;
