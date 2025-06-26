@@ -8,10 +8,12 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build"
+    "type-check": "vue-tsc --build",
+    "postbuild": "echo justekal.be > dist/CNAME"
   },
   "dependencies": {
-    "vue": "^3.5.17"
+    "vue": "^3.5.17",
+    "vue-i18n": "^11.1.7"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",

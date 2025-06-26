@@ -3,10 +3,11 @@
     <div class="about-me-card">
       <img src="/avatar.jpg" alt="Ma photo" class="about-photo" />
       <div>
-        <h2>Bonjour, je suis JusteKal</h2>
+        <h2>{{ $t('hi') }}</h2>
         <p>
-          Passionné de développement web, j’apprends à créer des sites modernes et efficaces.<br>
-          Bienvenue sur mon portfolio !
+          {{ $t('portofilio') }}<br>
+          {{ $t('créer') }}<br>
+          {{ $t('passion') }}
         </p>
       </div>
     </div>

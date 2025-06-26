@@ -3,15 +3,56 @@
     <div class="header-row">
       <h1><a href="#home">justekal.be</a></h1>
       <nav>
-        <a href="#about">À propos</a>
-        <a href="#projects">Projets</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">{{ $t('aboutme') }}</a>
+        <a href="#projects">{{ $t('projects') }}</a>
+        <a href="#contact">{{ $t('contact') }}</a>
+        <button
+          v-if="locale !== 'fr'"
+          @click="setLocale('fr')"
+          class="lang-flag"
+          aria-label="Français"
+        >
+          <img src="/fr.svg" alt="Français" width="28" height="28" />
+        </button>
+        <button
+          v-if="locale !== 'en'"
+          @click="setLocale('en')"
+          class="lang-flag"
+          aria-label="English"
+        >
+          <img src="/gb.svg" alt="English" width="28" height="28" />
+        </button>
+        <img
+          v-if="locale === 'fr'"
+          src="/fr.svg"
+          alt="Français"
+          class="lang-flag selected"
+          width="28"
+          height="28"
+        />
+        <img
+          v-if="locale === 'en'"
+          src="/gb.svg"
+          alt="English"
+          class="lang-flag selected"
+          width="28"
+          height="28"
+        />
       </nav>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+function setLocale(lang: string) {
+  locale.value = lang
+  document.documentElement.lang = lang
+  localStorage.setItem('locale', lang)
+}
 </script>
 
 <style scoped>
@@ -31,7 +72,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
 .site-header h1 {
@@ -57,5 +97,24 @@
   color: rgb(76, 120, 241);
   text-decoration: none;
   font-size: 1.1em;
+}
+.lang-flag {
+  background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: transform 0.2s;
+  outline: none;
+  padding: 0;
+}
+.lang-flag.selected {
+  filter: drop-shadow(0 0 4px rgb(76, 120, 241));
+  cursor: default;
+  pointer-events: none;
+  transform: scale(1.1);
+}
+.lang-flag img {
+  width: 100%;
+  height: 20px;
 }
 </style>

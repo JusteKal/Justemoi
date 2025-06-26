@@ -32,7 +32,7 @@ defineProps<{
   align-items: center;
   gap: 16px;
   cursor: pointer;
-  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1);
+  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1);  
 }
 .card:hover {
   box-shadow: 0 4px 16px rgb(76, 120, 241);
