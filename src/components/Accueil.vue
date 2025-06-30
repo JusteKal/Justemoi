@@ -1,14 +1,38 @@
 <template>
   <section class="accueil">
-    <h1>Bienvenue sur mon portfolio</h1>
-    <p>Découvrez mon univers de développeur !</p>
+    <h1 class="title">{{ $t('welcome') }}</h1>
+    <p class="subtitle">{{ $t('discover') }}</p>
     <div class="scroll-indicator"></div>
   </section>
 </template>
 
-
 <script setup lang="ts">
+import { onMounted } from 'vue'
+import gsap from 'gsap'
 
+onMounted(() => {
+  // Timeline pour l'animation d'entrée
+  const tl = gsap.timeline()
+  
+  tl.from('.title', {
+    y: -50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power2.out'
+  })
+  .from('.subtitle', {
+    y: 30,
+    opacity: 0,
+    duration: 0.8
+  }, '-=0.5')
+  .from('.scroll-indicator', {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    repeat: -1,
+    yoyo: true
+  })
+})
 </script>
 
 <style scoped>

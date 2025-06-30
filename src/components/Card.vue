@@ -1,20 +1,54 @@
 <template>
-  <component :is="link ? 'a' : 'div'" class="card" :href="link" target="_blank" rel="noopener" style="text-decoration: none;">
+  <component 
+    :is="link ? 'a' : 'div'" 
+    class="card" 
+    :href="link" 
+    target="_blank" 
+    rel="noopener" 
+    style="text-decoration: none;"
+  >
     <div class="card-content">
       <h2>{{ title }}</h2>
       <p>{{ content }}</p>
     </div>
-    <img v-if="img" :src="img" alt="">
+    <img v-if="img" :src="img" :alt="title">
   </component>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+// Enregistre le plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger)
+
 defineProps<{
   title: string
   content: string
   img?: string
   link?: string
 }>()
+
+onMounted(() => {
+  gsap.fromTo('.card',
+    { 
+      opacity: 0,
+      y: 50
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.card',
+        start: 'top bottom-=100', // Démarre quand le haut de la carte est 100px avant le bas de la fenêtre
+        toggleActions: 'play none none reverse' // Joue l'animation quand visible, reverse quand invisible
+      }
+    }
+  )
+})
 </script>
 
 <style scoped>

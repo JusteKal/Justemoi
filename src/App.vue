@@ -22,7 +22,7 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import AboutMe from './components/AboutMe.vue';
 import Card from './components/Card.vue';
-import Contact from './components/Contact.vue';
+import Contact from './components/Contact.vue'; 
 
 import { onMounted, onBeforeUnmount } from 'vue'
 
