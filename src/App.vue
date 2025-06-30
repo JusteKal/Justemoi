@@ -12,6 +12,7 @@
     </div>
   <Contact id="contact" />    
   <Footer />
+  <Toast ref="toast" />
   </div>
 </template>
 
@@ -22,8 +23,10 @@ import Footer from './components/Footer.vue'
 import AboutMe from './components/AboutMe.vue';
 import Card from './components/Card.vue';
 import Contact from './components/Contact.vue'; 
+import Toast from './components/Toast.vue';
 
-import { onMounted, onBeforeUnmount } from 'vue'
+
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 
 const sectionIds = ['home', 'apres-accueil', 'about', 'projects', 'projects-cards', 'contact'];
 
@@ -67,6 +70,34 @@ onMounted(() => {
     window.removeEventListener('wheel', handleScroll);
   });
 });
+
+const toast = ref()
+let clickCount = 0
+const secretTimeout = ref<number | null>(null)
+
+const checkSecretClick = () => {
+  clickCount++
+  
+  if (secretTimeout.value) {
+    clearTimeout(secretTimeout.value)
+  }
+  
+  secretTimeout.value = setTimeout(() => {
+    if (clickCount === 3) {
+      toast.value?.showToast('Trouver le secret !')
+    }
+    clickCount = 0
+  }, 500)
+}
+
+onMounted(() => {
+  document.addEventListener('click', checkSecretClick)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', checkSecretClick)
+  if (secretTimeout.value) clearTimeout(secretTimeout.value)
+})
 </script>
 
 <style scoped>
