@@ -82,6 +82,8 @@ onMounted(() => {
   max-width: 800px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   font-family: 'DM Sans', sans-serif;
+  position: relative;
+  margin-top: -20vh;
 }
 
 .photo-container {

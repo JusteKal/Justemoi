@@ -9,6 +9,7 @@
     <Card title="Mynthos Universe" :content="$t('card2')" img="https://cdn.modrinth.com/data/qwxJArlR/1db8c02578c53f7108db329bcb031c0825598d05.png" link="https://github.com/Wiibleyde/MynthosProject"/>
     <Card title="ECQCBLWK ?" :content="$t('card3')" img="/ECQCBLWK.png" link="https://weekend.justekal.be"/>
     <Card title="JusteKal.be" :content="$t('card4')" img="/favicon.ico" link="https://justekal.be"/>
+    
     </div>
   <Contact id="contact" />    
   <Footer />
@@ -137,7 +138,8 @@ onBeforeUnmount(() => {
 .app-background h1 {
   text-align: center;
   font-family: 'DM Sans', sans-serif;
-  margin-top: 20px;
+  margin-top: 20px; /* Augmenté de 20px à 80px */
+  margin-bottom: -10px; /* Ajouté pour équilibrer l'espacement */
   color: #fff;
   font-size: 2.5em;
 }

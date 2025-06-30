@@ -1,5 +1,6 @@
 <template>
-  <component 
+<div class="project-page">
+    <component 
     :is="link ? 'a' : 'div'" 
     class="card" 
     :href="link" 
@@ -13,6 +14,7 @@
     </div>
     <img v-if="img" :src="img" :alt="title">
   </component>
+</div>
 </template>
 
 <script setup lang="ts">
@@ -52,13 +54,20 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.project-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
 .card {
   background: #fff;
   color: #222;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 20px;
-  margin: 16px auto;
+  width: 100%;
   max-width: 400px;
   font-family: 'DM Sans', sans-serif;
   display: flex;
