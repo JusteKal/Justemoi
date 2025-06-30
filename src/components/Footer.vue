@@ -19,7 +19,7 @@
   width: 100%;
   padding: 12px 0;
   font-family: 'DM Sans', sans-serif;
-  background: #222;
+  background: #2F2F2F;
   color: #fff;
   text-align: center;
   font-size: 0.95em;
