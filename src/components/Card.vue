@@ -34,17 +34,17 @@ onMounted(() => {
   gsap.fromTo('.card',
     { 
       opacity: 0,
-      y: 50
+      y: 30
     },
     {
       opacity: 1,
       y: 0,
-      duration: 0.8,
+      duration: 0.3,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: '.card',
-        start: 'top bottom-=100', // Démarre quand le haut de la carte est 100px avant le bas de la fenêtre
-        toggleActions: 'play none none reverse' // Joue l'animation quand visible, reverse quand invisible
+        start: 'top bottom-=50', // Démarre quand le haut de la carte est 100px avant le bas de la fenêtre
+        toggleActions: 'play none' // Joue l'animation quand visible, reverse quand invisible
       }
     }
   )

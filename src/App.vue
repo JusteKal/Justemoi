@@ -28,40 +28,54 @@ import Toast from './components/Toast.vue';
 
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 
-const sectionIds = ['home', 'apres-accueil', 'about', 'projects', 'projects-cards', 'contact'];
+const sectionIds = ['home', 'apres-accueil', 'projects', 'contact']; // Removed 'apres-accueil'
 
 onMounted(() => {
   let isScrolling = false;
+  let lastScrollTime = Date.now();
 
   const handleScroll = (e: WheelEvent) => {
-    if (isScrolling) return;
+    const now = Date.now();
+    if (isScrolling || now - lastScrollTime < 50) return;
+    
     const direction = e.deltaY > 0 ? 1 : -1;
     const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
-    const scrollPos = window.scrollY;
-    const windowHeight = window.innerHeight;
 
-    // Trouve la section actuellement visible
-    let currentIndex = sections.findIndex(
-      section =>
-        section.offsetTop <= scrollPos + 10 &&
-        section.offsetTop + section.offsetHeight > scrollPos + 10
-    );
+    // Find current section based on viewport position
+    const viewportMid = window.innerHeight / 2;
+    let currentIndex = sections.findIndex(section => {
+      const rect = section.getBoundingClientRect();
+      const elementMid = rect.top + rect.height / 2;
+      return Math.abs(elementMid - viewportMid) < rect.height / 3;
+    });
 
-    // Si aucune section trouvée, prends la première
-    if (currentIndex === -1) currentIndex = 0;
+    // If no section is found, find closest
+    if (currentIndex === -1) {
+      currentIndex = sections.reduce((closest, section, index) => {
+        const rect = section.getBoundingClientRect();
+        const elementMid = rect.top + rect.height / 2;
+        const distance = Math.abs(elementMid - viewportMid);
+        return distance < closest.distance ? { index, distance } : closest;
+      }, { index: 0, distance: Infinity }).index;
+    }
 
     let nextIndex = currentIndex + direction;
     if (nextIndex < 0 || nextIndex >= sections.length) return;
 
-    isScrolling = true;
-    sections[nextIndex].scrollIntoView({ behavior: 'smooth' });
     e.preventDefault();
+    isScrolling = true;
+    lastScrollTime = now;
+
+    sections[nextIndex].scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
 
     setTimeout(() => {
       isScrolling = false;
-    }, 800); // Empêche le scroll multiple trop rapide
+    }, 800); // Reduced from 1000ms for better responsiveness
   };
 
   window.addEventListener('wheel', handleScroll, { passive: false });
