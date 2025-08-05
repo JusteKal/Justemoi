@@ -31,12 +31,11 @@
   <Contact id="contact" />    
   <Footer />
   <Toast ref="toast" />
-  <VisitorCounter />
   </div>
 </template>
 
 <script setup lang="ts">
-import { SpeedInsights } from "@vercel/speed-insights/nuxt"
+import { SpeedInsights } from "@vercel/speed-insights/nuxt";
 import Accueil from './components/Accueil.vue';
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
@@ -44,8 +43,7 @@ import AboutMe from './components/AboutMe.vue';
 import Card from './components/Card.vue';
 import Contact from './components/Contact.vue'; 
 import Toast from './components/Toast.vue';
-import VisitorCounter from './components/VisitorCounter.vue'
-import gsap from 'gsap'
+import gsap from 'gsap';
 
 const cards = [
   {
