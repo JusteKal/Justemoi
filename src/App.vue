@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { SpeedInsights } from "@vercel/speed-insights/nuxt";
+import { SpeedInsights } from "@vercel/speed-insights/vue";
 import Accueil from './components/Accueil.vue';
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
