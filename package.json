@@ -12,6 +12,7 @@
     "postbuild": "echo justekal.be > dist/CNAME"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.2.0",
     "gsap": "^3.13.0",
     "vue": "^3.5.17",
     "vue-i18n": "^11.1.7"
